@@ -18,3 +18,33 @@ code {
     height: 100vh;
     align-items: center;
 }
+
+.countrySearchBar {
+    background-color: #ffffff;
+    padding-top: 15px;
+    width: 100%;
+    z-index: 1;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+.countryCardContent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding-top: 120px;
+    padding-bottom: 20px;
+}
+
+/* move expanded card to another line to prevent changing a size of other cards */
+.expandedCard {
+  grid-column: span 3; 
+  grid-row: span 1; 
+}
+
+.countryCardContent > div {
+  margin: 40px;
+}

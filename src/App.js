@@ -5,6 +5,8 @@ import CountrySearchBar from "./components/CountrySearchBar";
 const App = () => {
   const [countries, setCountries] = useState([]);
   const [searchCountry, setSearchCountry] = useState("");
+  const [expandedIndex, setExpandedIndex] = useState(-1);
+  
 
   //FETCH ALL COUNTRIES FROM THE API
   useEffect(() => {
@@ -28,12 +30,26 @@ const App = () => {
     fetchData();
   }, []);
 
-  console.log("countries", countries);
+  //toggling the expansion state and preventing opening multiple cards at once 
+  const handleExpandClick = (index) => {
+    setExpandedIndex((prevIndex) => (prevIndex === index ? -1 : index));
+  };
 
   return (
     <div className="countryWrapper">
       <CountrySearchBar />
-      <CountryCard />
+      <div className="countryCardContent">
+        {countries.map((country, index) => (
+          <CountryCard
+            key={index}
+            countryData={country}
+            index={index}
+            expandedIndex={expandedIndex}
+            onExpandClick={() => handleExpandClick(index)}
+            expandedClass={expandedIndex === index ? "expandedCard" : ""}
+          />
+        ))}
+      </div>
     </div>
   );
 };

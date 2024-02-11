@@ -48,3 +48,29 @@ code {
 .countryCardContent > div {
   margin: 40px;
 }
+
+
+/* smaller screen 1 column per item */
+@media screen and (max-width: 826px) {
+  .countryWrapper {
+    padding-left: 20px; 
+  }
+
+  .countrySearchBar {
+    margin-left: 0;
+  }
+
+  .countryCardContent {
+    grid-template-columns: repeat(1, 1fr);
+    /* padding-top: 100px;  */
+  }
+
+  .expandedCard {
+    grid-column: span 1; 
+    grid-row: span 1; 
+  }
+
+  .countryCardContent > div {
+    margin: 20px; 
+  }
+}
